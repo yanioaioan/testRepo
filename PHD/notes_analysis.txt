@@ -1,0 +1,138 @@
+-Color vs grey image segmentation : better reults :l*a*b* color 		[A Novel Approach Towards Clustering Based Image Segmentation]
+
+-K-Means Faster than Fuzzy means []   2015[A Pragmatic approach for Detecting Liver Cancer Image Processing and Data Mining Techniques
+
+-Usual to combine efficient k-means with wavelet transform, watershed algorithm and other techniques so as to improve accuracy 82%  in an efficient manner 2015[A Pragmatic approach for Detecting Liver Cancer Image Processing and Data Mining Techniques
+
+-Haar wavelet transform to analyse the images. The Haar technique has two advantages: auto convert greyscale to RGB, more accuracy. AND it considers any discontinuous image and compresses it accordingly.	2015[A Pragmatic approach for Detecting Liver Cancer Image Processing and Data Mining Techniques
+
+-We use the most basic property of MRI images, which is the 'intensity difference'. To isolate the tumor from other regions the intensity property is enhanced by
+ efficient use of frequency emphasis. Homomorphic high pass filter based on Gaussian equation is used which intensifies the difference in luminosity between healthy tissues and malignant tumor affected tissues.
+This method is modification of standard homomorphic filtering technique. 	2015[Automatic Detection, Extraction and Mapping of Brain Tumor from MRI Scanned Images using Frequency Emphasis Homomorphic and Cascaded Hybrid Filtering Techniques.]
+
+-Application of Fuzzy logic in this method for segmentation could have launched new scope of processing. In order to make this method simple for medical intentionally avoided Fuzzy Clustering methods.
+	2015[Automatic Detection, Extraction and Mapping of Brain Tumor from MRI Scanned Images using Frequency Emphasis Homomorphic and Cascaded Hybrid Filtering Techniques.]
+
+-FCM, RoughF-CM, 
+robustRoughFuzzyC-Means method used here Latest method: the effectiveness of the proposed method is demonstrated both qualitatively and quantitatively, along with a comparison with other related algorithms, on a set of synthetic as well as real life brain MR images.
+	2015[Rough-Fuzzy Clustering and Unsupervised Feature Selection for Wavelet Based MR Image Segmentation]
+
+-The best performance of the proposed method is achieved due to the fact that the probabilistic membership function of the rRFCM handles efficiently overlapping partitions, while the possibilistic membership function
+ of lower approximation of a cluster helps to discover arbitrary shaped cluster. Moreover, the concept of possibilistic lower approximation and fuzzy boundary of the rRFCM algorithm
+ deals with uncertainty, vagueness, and incompleteness in class definition. In effect, good segmented regions are obtained using the proposed brain MR image segmentation algorithm.
+	2015[Rough-Fuzzy Clustering and Unsupervised Feature Selection for Wavelet Based MR Image Segmentation]
+
+
+-Watershed algorithm, stable and effective but not Accuracy oriented	2015[AUTOMATIC SEGMENTATION IN BREAST CANCER USING WATERSHED ALGORITHM]
+
+-Graph Cuts image segmentation method can achieve good results but not highly accurate	2011[Image segmentation by iterated region merging with localized graph cuts]
+
+Questions /  Wonderings:
+Detect the reason why We ake..? generate visual patterns representing abnormalities (2d x-y diagram)
+-Bones & relative motion --> ?? (different approach..if relative motion has not been addressed extensively maybe a very good but not THE MOST ACCURATE INNOVATION could be applied and then focus on how motion-relative motion)?? Fluoroscopy, Otsu method maybe good
+
+Detect the tumor in the most accurate way so far? would that be a PHD itself?
+What if someone already works in this direction and overtakes you? How woudl I know all the time? likely to happen.
+
+Brain-liver soft tissues??
+ should they all be approached in a similar manner regarding the segmentation method?
+Clustering agorithms seem to present the most accuracy! 
+Should all similar methods be implemented and measured as part of the research
+
+How to measure the techniques? any available standards to use? benchmark datasets to compare against. If building a better method. need to compare to the same dataset.
+How can we be sure that what is state is actually what we state? Simple measuring techniques. Simple compare against distance functions (2 images). Ground Truth 
+How can we be sure our stuff outperform other stuff accuracy-wise? any method to follow?how to measure accuracy
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-Conference Parer 1:Better Idea Method of segmenting fluorocsopic images
+-Clustering in fluoroscopy segmentation??
+
+cervical spine: 
+1)adapted region growing method: provided best results for both lumbar and cervical areas (Efficient Segmentation of 3D Fluoroscopic Datasets from Mobile C-arm)
+2)The implicit snake method produced more accurate and smoother segmentations and was able to remove wrongly segmented regions originating from skin tissue, which was predominantly present in images of extremities.
+The implicit snake method: provided the best results in regard to segmentation correctness, but was less computationally efficient
+
+Active Shape Model Method (2011)?!!!!! the way to go for fluoroscopy
+Fuzzy Segmentation Method (2002)?
+
+-Deformable objects need deformable template methods for their interpretation
+-Are cervical vertebras rigid or deformable? Rigid! the "deformable" refers to the way the model is converging
+-Several parameters control the shape and pose of parts of the model
+-Given a training set of models-> Point distribution model derived (representing typical shape and variability)
+-Each example is a set of labeled landmark points (in ex. boundaries of objects), we calculate the mean positions of the points and the main ways in which the points from each tend to vary from the mean
+
+
+-Moreover, while fluoroscopy is the most common imaging modality used for cervical nerve blocks and facet injections, there has recently been tremendous growth in the use of ultrasound for these interventions. Beyond the advantage of no ionizing radiation, ultrasound allows for the direct visualization of key soft-tissue structures such as the nerve bundles to target and the blood vessels to avoid [10]. [2014][http://www.imagewisely.org/imaging-modalities/fluoroscopy/articles/sheth-ultrasound-alternative]
+
+
+
+-ASM + extension (maybe with clasification)
+-Defomrable template methods refer to the way of converging the initial approximation shape to the closest match by deforming it (basically applying the ASM algorithm)
+-When analysing a sequence of frames: a way to smooth and measure us being correct is by:
+	making sure that the the error variance from the comparison of 1st-2nd and 1st-3rd, 
+																   2nd-3rd and 3rd-4th segmented frames..varies below  certain level. (Thus we are sure we are anyalysing correctly the whole sequence)
+
+-Inverse the Accuracy precision percentage to Inaccuracy Percentage:in example: 85-to 86 % is 1 % more accurate
+																				15-14% error reduction is : if 15 is 100- 1 more improvement ...about 6.6% improvement
+
+-Now that we are able to segment and approximate one vertebra (ex. C1) based on asm from multiple images at a pose 1.
+-We need different asm models for all other vertebrae asm models for pose 1 as well
+asm for(ex. C2)
+asm for(ex. C3)
+asm for(ex. C4)
+asm for(ex. C5)
+asm for(ex. C6)
+asm for(ex. C7)
+
+And now we are done with segmenting each individual vertebra at pose 1.
+We need to be able to identify & hence segment all the vertebrae in all
+other poses. while moving
+
+so, what's left is to find a way to initially place each asm for each vertebra for each pose and then start segmenting this pose's vertebrae.
+
+template match based on contours derived from asm init mean shape (investigate)
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+-profiles and derivative mismatch-->7 profiles..6 derivatives result in 6 possible correction for each landmark..??? should I consider a 8 profiles??
+-also 2(m-k)+1 ..(m  is the current position, k the pixels sampling length on each side) result in -1,-3,-5, 1, 3, 5 ..would this be valid??
+-could I edge detect before ImageSearch?
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+-cov(x,y) in mahalanobis: 
+
+
+gaussian window might need reversing (cause now it seems that the point whisker is tangent to the shape's edge)
+7x13 or 7x7 gausian sampling mask
+-Am I adjusting correctly each landmark's position -side= 2*(bestIndexProfile-3)+1 #bestIndexProfile-3
+
+
+-The first 3 numbers represent the x-coordinates for all 3 shapes for the first landmark, the second 40 for the second landmark until landmark n; followed by the same for the y-coordinates.
+
+x:(x1 , x2 , x3)
+y:(y1 , y2 , y3)
+
+General Check list - Algorithm Steps
+-Generate a family of shapes with a range of transformed shapes and apply PCA. List the
+eigenvalues. Please note that the number of shapes should be at least twice the number
+of points to ensure full rank of the covariance matrix. For transformation, apply:
+(a) random translations, report and plot eigenvalues
+(b) random scale, report and plot eigenvalues
+(c) random translations and scale, report eigenvalues
+2. Add random noise to each point and repeat previous experiments. Discuss eigenvalues
+obtained without and with noise.
+3. Synthesize the major eigenmodes of deformation (e.g. modes 1 to 3) for the latter case
+with noise and translated and scaled shapes by creating shapes that represent the mean
+shape plus/minus s ∗ Sqrt[eigvali
+].
+4. You might Add random noise to each node. What do you expect in regard to the resulting
+eigenvalues?
+5. Rotation: Generate a set of rotated shapes (only rotation with some small noise perturbation).
+Apply PCA, and reconstruct the eigenmodes of variation. Discuss the eigenvalues
+and harmonics you get, what is your interpretation?
+

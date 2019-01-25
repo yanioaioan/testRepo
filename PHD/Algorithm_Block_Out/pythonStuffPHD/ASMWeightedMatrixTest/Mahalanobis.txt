@@ -1,0 +1,19 @@
+first compute g(mean) of mean shape
+Then for each training image-shape from the set of training images-shapes
+	  for each landmark of each training image-shape
+		Dprevious=100;//an intentionally large value
+		for each point along the normal of each landmark
+			computer g;
+			compute D=(g − gmean)T *Sginverse*(g − gmean)
+			if(D<Dprevious)
+			{
+				//save this point along the normal as the best fit
+				bestfitpoint=point
+			}
+			Dprevious=D
+	 	update point based on bestfitpoint
+	till convergence
+
+
+
+

@@ -1,0 +1,82 @@
+first compute g(mean) of mean shape
+Then for each training image-shape from the set of training images-shapes
+	  for each landmark of each training image-shape
+		Dprevious=100;//an intentionally large value
+		for each point along the normal of each landmark
+			computer g;
+			compute D=(g − gmean)T *Sginverse*(g − gmean)
+			if(D<Dprevious)
+			{
+				//save this point along the normal as the best fit
+				bestfitpoint=point
+			}
+			Dprevious=D
+	 	update point based on bestfitpoint
+	till convergence
+
+
+
+
+
+
+
+for t in drange(-3, 3, 1):#along normal profile
+	# Look 6 pixels to each side too
+	
+	horizontalProfileFormed = Shape([])
+	counter=1
+	for side in range(-6,6):#tangent width
+	  # Normal to normal...
+	  #print "norm",norm
+	  new_p = Point(p.x + side*-norm[1], p.y + side*norm[0])#why ..the other way around? best way to form the search window 12 x 7 = 84 pixels wide window 
+	  #print "p",(p.x,p.y)
+	  #print "new_p",(new_p)
+	  
+	  #distributed = drange(-search if -search > min_t else min_t, search if search < max_t else max_t , 1)
+	  #for t in distributed:
+	  
+	  counter=counter+1
+		
+	  x = int((norm[0]*t + new_p.x))#*math.sin(t*(math.pi/180)))
+	  y = int((norm[1]*t + new_p.y))#*math.cos(t*(math.pi/180)))
+
+	  #print "x=%d, y=%d"%(x,y)
+	  #cv.WaitKey()  
+	  
+	  
+	  horizontalProfileFormed.add_point(Point(x,y))
+
+	  if x < 0 or x > self.image.width or y < 0 or y > self.image.height:
+		continue
+	  cv.Circle(img, (x, y), 1, (100,100,100))
+	  
+	  #print x, y, self.g_image.width, self.g_image.height
+
+	  #print "g_image[scale][y-1, x-1]",self.g_image[scale][y-1,x-1]
+
+	  print "TEST.... G_IMAGE:",self.g_image[scale][y-1, x-1]
+
+	  '''
+	  if self.g_image[scale][y-1, x-1] > max_edge:#choose the pixel amongst the 12 pixels checked with the greater value(indicating an edge)
+		max_edge = self.g_image[scale][y-1, x-1]
+		max_pt = Point(new_p.x + t*norm[0], new_p.y + t*norm[1])
+	  '''
+
+	  im_array = np.asarray( self.g_image[scale][:,:] )
+
+	  #y-1 x-1 : keep the pixel inside limits
+	  if im_array[y-1,x-1] > max_edge:#choose the pixel amongst the 12 pixels checked with the greater value(indicating an edge)
+		max_edge = im_array[y-1,x-1]
+		max_pt = Point(new_p.x + t*norm[0], new_p.y + t*norm[1])
+
+	#fitting visualization of the each profile
+	'''
+	for point in horizontalProfileFormed.pts:
+	  cv.Circle(img, (int(point.x), int(point.y)), 1, (255,255,255))
+	  print "profile number %d",counter
+	cv.WaitKey()
+	'''
+
+
+
+

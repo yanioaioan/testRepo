@@ -1,0 +1,7 @@
+1)rough-fuzzy clustering integrates judiciously the merits of rough sets, and probabilistic and possibilistic memberships of fuzzy sets. [Rough-Fuzzy Clustering and Unsupervised Feature Selection for Wavelet Based MR Image Segmentation]
+2)clustering seems to way to go
+3)K-means seems faster Fuzzy logic seems more accurate and slower
+4)There are more than 40 segmentation methods. However, all depends on researcher choice, 
+  I usually use the Otsu method if the image shows a bi-modal structure but one of the most recommended is: Mathematical Morphology developed at INRIA by Levy-Vehel et al.Cheers Dr. Millan
+
+5)

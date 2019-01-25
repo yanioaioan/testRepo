@@ -1,0 +1,6 @@
+../phdtest/images/lastworking/1-50/grey_image_1-50.jpg = ../phdtest/images/all150/grey_image_101-150.jpg
+
+So, here the training set on this folder..image: grey_image_1.jpg to grey_image_50.jpg are actually the ../phdtest/images/all150/grey_image_101-150.jpg
+-And the target target1-100_first_1_25/grey_image_1.jpg to grey_image_25.jpg are actually the ../phdtest/images/all150/grey_image_1-25.jpg
+-And the target target1-100_first_26_50/grey_image_26.jpg to grey_image_50.jpg are actually the ../phdtest/images/all150/grey_image_26-50.jpg  
+

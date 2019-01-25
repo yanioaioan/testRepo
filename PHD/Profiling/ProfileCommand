@@ -1,0 +1,2 @@
+python -m cprofilev segmentImage.py images/fluoroTEST/ images/fluoroTEST/grey_image_2.jpg 
+

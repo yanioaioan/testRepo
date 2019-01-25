@@ -1,0 +1,85 @@
+Paper 2010/2011: 
+SINGLE IMAGE scaled, patient-specific 3D vertebral model reconstruction
+based on 2D lateral fluoroscopy
+
+the reconstruction is based on:
+1) only 1 fluoro image --> possible limitations??
+2) a training model constisting of a limited number of binary data derived from CT-Scans / AND not a generic vertebrae model
+
+So, potentially if there's a big enough training dataset,
+this method can successfully reconstruct with high accuracy (measured against
+CT binary data), a 3d vertebra from a single fluoro image
+
+
+????????? investigate how the 4 following are done so as to be able to replicate  ??????????
+
+Read about landmark-to-ray registration 2d to 3D in:
+(Statistically Deformable 2D/3D Registration for Estimating Post-operative Cup Orientation from a Single Standard AP X-ray Radiograph)
+
+Find out if there are other 
+
+a) The landmark-to-ray registration is used to find 
+an initial scale and an initial rigid transformation between the
+fluoroscopic image and the statistical shape model. 
+
+b) The estimated scale and rigid transformation are then used to initial-
+ize the statistical shape model–based 2D/3D reconstruction scheme.
+
+c) The construction of the statistical shape models (from CT real patient data)
+  
+d) Statistically deformable 2D/3D reconstruction approach
+
+--------------------------------------------------
+
+Paper 2015 more or less:
+3d-reconstruction-anatomical-structures-2d-x-ray-images: (from 1 or more x-rays)
+
+1) Compare the X-ray in question with a number of virtual x-rays from 
+	3d models, examining both shape and intensity information (as the
+	virtual x-rays come from a 3d models that 
+	incorporate volumetric density information --> Where do we get these from?? is there any better way around it????
+
+2) a training model constisting of a limited number of binary data derived from CT-Scans / AND not a generic vertebrae model HERE AS WELL AS BEFORE 
+in ("scaled, patient-specific 3D vertebral model reconstruction based on 2D lateral fluoroscopy"), this time enriched by internal bone intensity information
+
+-Summary: i)we have a 3d model coming from SSMs a priory real patient CT-data to start with...(a mean model of say 30 patients is proven to be able to create a 			reliable starting point)
+		  ii) produce virtual x-rays of this 3d model
+		  iii) compare the virtual x-rays 3d model contours&intensity information with silhouettes of reference real patient X-ray images
+
+Otherwise previous approaches' Problems identified:
+X-ray silhouettes first have to be extracted from the individual patient's X-ray images in a manual or automatic manner (by segmenting the x-ray of hte patient).
+and be compared with the SSM model projections contours
+
+!Even more problematic is to use contour information only, as this ignores important information on the interior structures!!.
+
+
+-----
+
+All the previously mentioned newer methods are based on 3D SSMs which is better than :
+-------------------------------------------------------------------------------------------------
+Doing a direct linear transformation (DLT) for the recon-										|
+struction of manually extracted rib midlines from a pair of stereo-radiographs (one				|
+conventional PA-view and a second PA-view with 20◦ difference of the X-ray source’s				|
+incidence angle, see Fig. 3.1).																	|
+																								
+Or
+
+to obtain 3D coordinates of anatomical landmarks that need to be identified
+in the 2D radiographs using A generic 3D model of a scoliotic patient, reconstructed
+from computer tomography (CT), and then this is adapted to these landmarks using free form-
+deformation to estimate patient-specific surface models.
+-------------------------------------------------------------------------------------------------
+
+Their PDMs are a result of training sets that are created from triangulated surface models of pre segmented CT- scans' binary data exports
+
+The idea is that 3D surface models of the BONE structure in question are extracted from real CT-data of a number of patients 
+and feeded as a priori knowedge for the 3D reconstruction ,
+The reconstruction is progressively optimized by deforming the SSM model based on a cost function of similarity between the
+real X-ray reference and either the SSM model's Virtual X-ray (2015 newer mehtod) or the SSM model's contour projections (2006,2008,2010) 
+
+
+---------------------------------------------------------------------------------
+
+maybe investigate projective tetrahedra alternatives???
+
+

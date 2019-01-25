@@ -1,0 +1,22 @@
+http://www.milbo.users.sonic.net/stasm/
+http://www.mathworks.com/matlabcentral/fileexchange/26706-active-shape-model--asm--and-active-appearance-model--aam-/content/ASM_2D_example.m
+http://www.openimaj.org/apidocs/src-html/org/openimaj/image/model/asm/ActiveShapeModel.html
+http://ieeexplore.ieee.org/search/searchresult.jsp?queryText=active%20shape%20model&sortType=desc_p_Publication_Year&searchField=Search_All
+http://personalpages.manchester.ac.uk/staff/timothy.f.cootes/asm_links.html
+http://www.cs.utah.edu/~manasi/coursework/cs7960/p4/project4.html
+http://www.ukessays.com/essays/medical/algorithms-for-pre-processing-and-processing-stages-of-x-ray-images.php
+http://www.sciencedirect.com/science/article/pii/S1350453311001469
+
+
+Literature: 
+- Ginneken B. et al. "Active Shape Model Segmentation with Optimal Features", IEEE Transactions on Medical Imaging 2002. 
+ - T.F. Cootes, G.J Edwards, and C,J. Taylor "Active Appearance Models", Proc. European Conference on Computer Vision 1998 
+ - T.F. Cootes, G.J Edwards, and C,J. Taylor "Active Appearance Models", IEEE Transactions on Pattern Analysis and Machine Intelligence 2001
+
+Examples(2D): 
+Run the example "ASM_2D_example" and "AAM_AAM_2D_example", the examples are made from manually drawn contours in 10 hand photos (with DrawContourGui). After training the ASM / AAM model will automatically find the contour in the test hand image.
+
+Examples(3D): 
+First train the classifier to recognize the Mandible "ASM_3D_train_example" or "AAM_3D_train_example", and then segment with "ASM_3D_apply_example", or "AAM_3D_apply_example".
+
+

@@ -1,0 +1,113 @@
+#! /opt/Nuke9.0v6/libnuke-9.0.6.so -nx
+version 9.0 v6
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="1920" y="28" w="1920" h="1139" maximized="1" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1257" stretch="1"/>
+            <splitter orientation="2">
+                <split size="634"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.2"/>
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="446"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name /home/yioannidis/Desktop/PHD/myphd/PHD/Algorithm_Block_Out/pythonStuffPHD/ASMWeightedMatrixTest/test/WORKING_TEST_RECTANGLE/DESKTOP_LAST_WORKINGTESTS_TEST_STATISTICAL_SHAPE_MODEL_FIT/TEST_STATISTICAL_SHAPE_MODEL_FIT/everything/images/HD-Fluoro/08AlBl_Flex/.nk
+ frame 34
+ first_frame 31
+ last_frame 50
+ lock_range true
+ format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+}
+Read {
+ inputs 0
+ file /home/yioannidis/Desktop/PHD/myphd/PHD/Algorithm_Block_Out/pythonStuffPHD/ASMWeightedMatrixTest/test/WORKING_TEST_RECTANGLE/DESKTOP_LAST_WORKINGTESTS_TEST_STATISTICAL_SHAPE_MODEL_FIT/TEST_STATISTICAL_SHAPE_MODEL_FIT/phdtest/images/current-working-30-40/grey_image_#.jpg
+ format "512 512 0 0 512 512 1 square_512"
+ last 10
+ origlast 10
+ origset true
+ name Read2
+ xpos 344
+ ypos -257
+}
+Read {
+ inputs 0
+ file /home/yioannidis/Desktop/PHD/myphd/PHD/Algorithm_Block_Out/pythonStuffPHD/ASMWeightedMatrixTest/test/WORKING_TEST_RECTANGLE/DESKTOP_LAST_WORKINGTESTS_TEST_STATISTICAL_SHAPE_MODEL_FIT/TEST_STATISTICAL_SHAPE_MODEL_FIT/everything/images/HD-Fluoro/08AlBl_Flex/exportedAfterSegmentationOverTime50frames/Points/allSofar-asPoints/exportedFrame_#.jpg
+ format "512 512 0 0 512 512 1 square_512"
+ last 50
+ origlast 50
+ origset true
+ version 1
+ name Read1
+ xpos -550
+ ypos -215
+}
+Read {
+ inputs 0
+ file /home/yioannidis/Desktop/PHD/myphd/PHD/Algorithm_Block_Out/pythonStuffPHD/ASMWeightedMatrixTest/test/WORKING_TEST_RECTANGLE/DESKTOP_LAST_WORKINGTESTS_TEST_STATISTICAL_SHAPE_MODEL_FIT/TEST_STATISTICAL_SHAPE_MODEL_FIT/everything/images/HD-Fluoro/08AlBl_Flex/exportedAfterSegmentationOverTime50frames/Contours/allSofar-asContours/exportedFrame_#.jpg
+ format "512 512 0 0 512 512 1 square_512"
+ last 50
+ origlast 50
+ origset true
+ name Read3
+ xpos -373
+ ypos -220
+}
+Viewer {
+ frame 34
+ frame_range 31-50
+ name Viewer2
+ xpos -373
+ ypos -54
+}
+Read {
+ inputs 0
+ file /home/yioannidis/Desktop/PHD/myphd/PHD/Algorithm_Block_Out/pythonStuffPHD/ASMWeightedMatrixTest/test/WORKING_TEST_RECTANGLE/DESKTOP_LAST_WORKINGTESTS_TEST_STATISTICAL_SHAPE_MODEL_FIT/TEST_STATISTICAL_SHAPE_MODEL_FIT/everything/images/HD-Fluoro/08AlBl_Flex/exportedAfterSegmentationStatic/exportedFrame_#_.jpg
+ format "512 512 0 0 512 512 1 square_512"
+ last 50
+ origlast 50
+ origset true
+ name Read5
+ xpos 79
+ ypos -179
+}
+Viewer {
+ frame 34
+ frame_range 1-50
+ name Viewer1
+ xpos -37
+ ypos -16
+}
+Read {
+ inputs 0
+ file /home/yioannidis/Desktop/PHD/myphd/PHD/Algorithm_Block_Out/pythonStuffPHD/ASMWeightedMatrixTest/test/WORKING_TEST_RECTANGLE/DESKTOP_LAST_WORKINGTESTS_TEST_STATISTICAL_SHAPE_MODEL_FIT/TEST_STATISTICAL_SHAPE_MODEL_FIT/everything/images/HD-Fluoro/08AlBl_Flex/exportedAfterSegmentationOverTime50frames/exportedFrame_#_.jpg
+ format "512 512 0 0 512 512 1 square_512"
+ last 50
+ origlast 50
+ origset true
+ name Read4
+ xpos -147
+ ypos -233
+}

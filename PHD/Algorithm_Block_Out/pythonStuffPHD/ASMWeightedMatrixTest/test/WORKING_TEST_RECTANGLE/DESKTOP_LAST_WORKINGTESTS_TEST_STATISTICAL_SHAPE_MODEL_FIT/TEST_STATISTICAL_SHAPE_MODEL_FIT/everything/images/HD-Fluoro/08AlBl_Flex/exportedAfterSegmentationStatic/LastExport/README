@@ -1,0 +1,11 @@
+Segmentation:
+#from 50 to 90 frames
+for i in {1..41}; do  python segmentImage.py phdtest/points/ANDERST-ADAM/C5/1-96/enhanced/50-90 phdtest/images/ANDERST-ADAM/C5/1-96/enhanced/inverted/50-90/target/grey_image_"$((i))".jpg; done;
+
+
+Images - Derived from executing:
+for i in {1..41}; do  python showLandmarksOnImageJustForPrinting.py  ../../../../phdtest/points/ANDERST-ADAM/C5/1-96/enhanced/50-90/exportedPointsForEachStaticFrame/frame"$((i))"/scale0/ ../../../../phdtest/images/ANDERST-ADAM/C5/1-96/enhanced/inverted/50-90/target/grey_image_"$((i))".jpg ../../../../phdtest/points/ANDERST-ADAM/C5/1-96/enhanced/50-90/exportedPointsForEachStaticFrame/frame"$((i))"/scale0/ ; done;
+
+
+CONTAINS individually segmented on target:
+phdtest/points/ANDERST-ADAM/C5/1-96/enhanced/50-90/exportedPointsForEachStaticFrame/frame1/scale0 TO phdtest/points/ANDERST-ADAM/C5/1-96/enhanced/50-90/exportedPointsForEachStaticFrame/frame41/scale0

@@ -1,0 +1,102 @@
+<html>
+<head>
+<title>masm: Manchester's Active Shape Model library</title>
+</head>
+<body>
+<h1>masm: Manchester's Active Shape Model library</h1>
+The <tt>masm</tt> library contains classes to implement a 2D Active Shape Model (ASM).<br>
+The ASM is an algorithm to match statistical shape models to image - or rather, to find a set of model points on an image with positions constrained by a statistical shape model.<br>
+It comes with a set of <a href="masm_tools_overview.html">tools</a> to build ASMs and to run them over sets of images (see the tools directory).<br>
+
+<ul>
+<li><a href="#masm_requirements">Requirements</a>
+<li><a href="#masm_algorithm">The Basic Algorithm</a>
+<li><a href="#masm_usage1">Example Usage</a>
+<li><a href="#masm_sequence">Sequences of ASMs</a>
+</ul>
+
+
+<h3><a name="masm_requirements">Requirements</h3>
+The masm library depends on VXL, and in particular <tt>contrib/mul/msm</tt> - the statistical shape modelling library in Manchester's contributions to VXL.
+
+<h2><a name="masm_algorithm">The Basic Algorithm</h2>
+Given a shape model instance defining the initial position of a set of model points on an image,
+the basic ASM algorithm iterates the following steps:
+
+<ul>
+<li> Search around each point with a local model to find the best local position of that point
+<li> Optimise the shape and pose parameters to best fit to the new point positions
+</ul>
+
+The <tt>masm_model</tt> class contains the data required for an ASM.  In particular:<br>
+<ul>
+<li>A copy of a statistical shape model (<tt>msm_shape_model</tt>)
+<li>A set of <tt>msm_point_finder_model</tt> objects, one for each point.
+</ul>
+
+To search an image with an ASM, you must create a <tt>masm_searcher</tt> object, which contains
+the current shape and pose parameters, as well as a set of <tt>msm_point_finder</tt> objects, which will do the search for each point.<br>
+There can be multiple <tt>masm_searcher</tt> objects, all using the same <tt>masm_model</tt>.
+
+<h3><a name="masm_usage1">Example usage</h3>
+To load in a model and use it to search an image:
+<tt><pre>
+  // Load in the ASM
+  masm_model model;
+  if (!vsl_quick_file_load(model,params.asm_path)) return 1;
+
+  // Create a searcher (which will be initialised with the default pose)
+  masm_searcher asm_searcher(model);
+
+  // Load in an image
+  vimt_image_2d_of<vxl_byte> image;
+  vimt_load(image,image_path);
+  if (image.image().size()==0) return 2;
+
+  // Most models assume grey-scale images.  If RGB then convert to grey.
+  if (image.image().nplanes()==3)
+  {
+    vil_image_view<vxl_byte> grey_image;
+    vil_convert_planes_to_grey(image.image(),grey_image);
+    image.image()=grey_image;
+  }
+
+  // Build an image pyramid from this
+  vimt_gaussian_pyramid_builder_2d<vxl_byte> pyr_builder;
+
+  vimt_image_pyramid image_pyr;
+  pyr_builder.build(image_pyr,image);
+
+  // Perform the search
+  asm_searcher.search(image_pyr);
+
+  // Get the resulting points
+  msm_points final_points = asm_searcher.points();
+</pre></tt>
+
+<h2><a name="masm_sequence">Sequences of ASMs</h2>
+It is often useful to use a sequence of ASMs to get faster and more robust results.<br>
+For instance, the first ASM may work at a low resolution with only a few shape parameters - this can get to the approximate solution quickly. Subsequent ASMs will then work at increasing resolution with more shape modes.  This is a generalisation of the original "Multi-Resolution ASM" idea.<br>
+This is expressed in the library using the <tt>masm_model_series</tt> class, which stores a sequence of <tt>masm_model</tt> objects, and the associated <tt>masm_series_searcher</tt> which stores a set of <tt>masm_searcher</tt> objects, which will be applied in sequence.<br>
+The latter is used in almost exactly the same way as the single ASM:
+
+<tt><pre>
+  // Load in the ASM sequence
+  masm_model_series model;
+  if (!vsl_quick_file_load(model,params.asm_path)) return 1;
+
+  // Create a searcher (which will be initialised with the default pose)
+  masm_series_searcher asm_searcher(model);
+
+  // Perform the search
+  asm_searcher.search(image_pyr);
+
+  // Get the resulting points
+  msm_points final_points = asm_searcher.points();
+</pre></tt>
+
+For working examples of using the classes, see the programs in the <tt>tools</tt> and <tt>tests</tt> subdirectories.
+
+</body>
+</html>
+
