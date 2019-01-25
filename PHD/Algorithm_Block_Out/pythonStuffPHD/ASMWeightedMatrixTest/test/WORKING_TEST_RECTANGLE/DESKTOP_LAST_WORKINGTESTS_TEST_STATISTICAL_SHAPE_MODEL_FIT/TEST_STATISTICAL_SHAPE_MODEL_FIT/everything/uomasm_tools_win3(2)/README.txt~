@@ -1,7 +1,0 @@
-UoMASM
-Compiled tools (+doc) for Windows platforms.
-Does not contain any source - see 
-
-bin: Win32 compiled tools
-doc: Documentation
-examples: Data for examples

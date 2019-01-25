@@ -1,2 +1,0 @@
-1) 3d reconstruction of coronary veins from a single fluoroscopic image and !!! preoperative mr !!!
-2) http://www.zib.de/projects/3d-reconstruction-anatomical-structures-2d-x-ray-images !! !!

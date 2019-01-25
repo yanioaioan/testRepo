@@ -1,1 +1,0 @@
-python fit_to_image.py 68pts/images/ 68pts/images/fluoSpineTestEdited_phixr.jpg
